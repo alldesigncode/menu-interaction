@@ -1,0 +1,30 @@
+<div class="menu-wrapper menu-base" #menuBase>
+  <div
+    class="menu"
+    #menu
+    [@menuExpand]="expandState"
+    (@menuExpand.done)="expansionDone($event)"
+  >
+    <div class="elements" #elements>
+      <ng-container *ngFor="let menu of menuData">
+        <ng-container *ngIf="menu.url; else withoutUrl">
+          <a [routerLink]="[menu.url]" class="element">{{ menu.name }}</a>
+        </ng-container>
+        <ng-template #withoutUrl>
+          <a class="element">{{ menu.name }}</a>
+        </ng-template>
+      </ng-container>
+    </div>
+    <button
+      class="menu-btn"
+      (click)="expand()"
+      [disabled]="buttonDisabled"
+      [ngClass]="{
+        'btn-expand': expandState === 'expanded',
+        'btn-transform': menuExpansionDone
+      }"
+    >
+      <span class="btn-icon"></span>
+    </button>
+  </div>
+</div>

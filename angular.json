@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "menu-interaction"
+    }
+  },
+  "defaultProject": "menu-interaction",
+  "cli": {
+    "analytics": false
+  }
 }
